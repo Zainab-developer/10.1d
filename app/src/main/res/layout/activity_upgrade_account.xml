@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_gravity="center"
+    android:background="@drawable/background"
+    android:orientation="vertical"
+    android:padding="16dp">
+
+    <TextView
+        android:id="@+id/tvUpgradeYourExperience"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:text="Upgrade \nYour Experience"
+        android:textColor="@color/black"
+        android:textSize="30sp"
+        android:textStyle="bold" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:background="@color/task_due_text"
+        android:orientation="vertical"
+        android:padding="16dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="Starter"
+            android:textColor="@color/white"
+            android:textSize="20sp" />
+
+        <com.paypal.checkout.paymentbutton.PaymentButtonContainer
+            android:id="@+id/payment_button_container_starter"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:gravity="center"
+            app:paypal_button_color="blue"
+            app:paypal_button_enabled="true"
+            app:paypal_button_label="pay"
+            app:paypal_button_shape="rectangle"
+            app:paypal_button_size="large" />
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:background="@color/task_due_text"
+        android:orientation="vertical"
+        android:layout_marginTop="5dp"
+        android:padding="16dp">
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="Intermediate"
+            android:textColor="@color/white"
+            android:textSize="20sp" />
+
+        <com.paypal.checkout.paymentbutton.PaymentButtonContainer
+            android:id="@+id/payment_button_container_inter"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:gravity="center"
+            app:paypal_button_color="blue"
+            app:paypal_button_enabled="true"
+            app:paypal_button_label="pay"
+            app:paypal_button_shape="rectangle"
+            app:paypal_button_size="large" />
+
+
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:background="@color/task_due_text"
+        android:orientation="vertical"
+        android:layout_marginTop="5dp"
+        android:padding="16dp">
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="Advanced"
+            android:textColor="@color/white"
+            android:textSize="20sp" />
+
+        <com.paypal.checkout.paymentbutton.PaymentButtonContainer
+            android:id="@+id/payment_button_container_advanced"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:gravity="center"
+            app:paypal_button_color="blue"
+            app:paypal_button_enabled="true"
+            app:paypal_button_label="pay"
+            app:paypal_button_shape="rectangle"
+            app:paypal_button_size="large" />
+
+
+    </LinearLayout>
+
+
+
+
+</LinearLayout>
