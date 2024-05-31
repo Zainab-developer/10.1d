@@ -40,30 +40,22 @@ public class HomePageActivity extends AppCompatActivity {
     TinyDB tinyDB;
     Button upgrade_btn;
     Button history_btn;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home_page);
 
-        upgrade_btn = findViewById(R.id.upgarde_btn);
-        history_btn = findViewById(R.id.history_Button);
-        click();
         textViewYourName = findViewById(R.id.textViewYourName);
         imageViewProfile = findViewById(R.id.imageViewProfile);
-//        textViewNotification = findViewById(R.id.textViewNotification);
         containerTask = findViewById(R.id.containerTask);
         viewTaskBtn = findViewById(R.id.viewTask);
         tinyDB = new TinyDB(this);
-//        checkForNewTask();
+
 
         textViewYourName.setText(tinyDB.getString("username").toString());
-textViewYourName.setOnClickListener(new View.OnClickListener() {
-    @Override
-    public void onClick(View v) {
-        startActivity(new Intent(HomePageActivity.this, ProfileScreenActivity.class));
 
-    }
-});
+
         viewTaskBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -86,116 +78,6 @@ textViewYourName.setOnClickListener(new View.OnClickListener() {
                 startActivity(new Intent(HomePageActivity.this,HistoryActivity.class));
             }
         });
-    }
+    }}
 
-//    private void fetchUserData(int userId) {
-//        String url = "http://10.0.2.2:3000/getUserData?userId=" + userId;
-//        Log.d("FetchData", "Request URL: " + url);
-//        JsonObjectRequest request = new JsonObjectRequest(Request.Method.GET, url, null,
-//                response -> {
-//                    try {
-//                        String username = response.getString("username");
-////                        String profilePictureUrl = response.getString("profilePicture");
-//                        textViewYourName.setText(username);
-//                        Log.d("FetchData", "Username set to: " + username);
-//                        // Picasso.get().load(profilePictureUrl).into(imageViewProfile);
-//                    } catch (JSONException e) {
-//                        Log.e("FetchData", "JSON Parsing error: " + e.getMessage());
-//                        Toast.makeText(HomePageActivity.this, "Error parsing user data", Toast.LENGTH_SHORT).show();
-//                    }
-//                },
-//                error -> Toast.makeText(HomePageActivity.this, "Failed to fetch user data", Toast.LENGTH_SHORT).show()
-//        );
-//
-//        RequestQueue queue = Volley.newRequestQueue(this);
-//        queue.add(request);
-//    }
 
-//    private void checkForNewTask() {
-//        String currentDate = new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault()).format(new Date());
-//        String lastTaskDate = prefs.getString("lastTaskDate", "");
-//        Log.d("TaskCheck", "Current Date: " + currentDate + ", Last Task Date: " + lastTaskDate);
-//        // if it is a new day
-//        if (!currentDate.equals(lastTaskDate)) {
-//            Log.d("TaskCheck", "New day detected, fetching new tasks.");
-//            fetchUserInterests(userId);
-//            prefs.edit().putString("lastTaskDate", currentDate).apply();
-//        } else {
-//            Log.d("TaskCheck", "Same day, no new tasks fetched.");
-//            fetchUserInterests(userId);
-//        }
-//    }
-
-//    private void resetTaskCompletionStatus(JSONArray interests) {
-//        SharedPreferences.Editor editor = prefs.edit();
-//        try {
-//            for (int i = 0; i < interests.length(); i++) {
-//                String interest = interests.getString(i);
-//                editor.putBoolean("Generated Task for " + interest, false);
-//            }
-//            editor.apply();
-//        } catch (JSONException e) {
-//            e.printStackTrace();
-//        }
-//    }
-
-//    private void fetchUserInterests(int userId) {
-//        String url = "http://10.0.2.2:3000/getUserInterests?userId=" + userId;
-//
-//        JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.GET, url, null,
-//                response -> {
-//                    try {
-//                        JSONArray interests = response.getJSONArray("interests");
-//                        int tasksDue = interests.length();
-////                        textViewNotification.setText(String.format(Locale.getDefault(), "You have %d task%s due", tasksDue, tasksDue > 1 ? "s" : ""));
-//                        containerTask.removeAllViews();
-//                        resetTaskCompletionStatus(interests);
-//
-//                        for (int i = 0; i < interests.length(); i++) {
-//                            String interest = interests.getString(i);
-//                            boolean isCompleted = prefs.getBoolean("Generated Task for " + interest, false);
-//                            if (!isCompleted) {
-//                                addTaskView("Generated Task for " + interest, "Please complete today's quiz about " + interest + ".", interest);
-//                            }
-//                        }
-//                    } catch (JSONException e) {
-//                        e.printStackTrace();
-//                        Toast.makeText(HomePageActivity.this, "Failed to parse interests", Toast.LENGTH_SHORT).show();
-//                    }
-//                },
-//                error -> Toast.makeText(HomePageActivity.this, "Failed to fetch interests", Toast.LENGTH_SHORT).show()
-//        );
-//
-//        RequestQueue queue = Volley.newRequestQueue(this);
-//        queue.add(jsonObjectRequest);
-//    }
-
-//    private void addTaskView(String taskName, String description, final String topic) {
-//        boolean isCompleted = prefs.getBoolean("Generated Task for " + topic, false);
-//        if (!isCompleted) {
-//            TextView taskTitle = new TextView(this);
-//            taskTitle.setLayoutParams(new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT));
-//            taskTitle.setText(taskName);
-//            taskTitle.setTextColor(ContextCompat.getColor(this, R.color.black));
-//            taskTitle.setTextSize(TypedValue.COMPLEX_UNIT_SP, 18);
-//
-//            TextView taskDescription = new TextView(this);
-//            taskDescription.setLayoutParams(new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT));
-//            taskDescription.setText(description);
-//            taskDescription.setTextColor(ContextCompat.getColor(this, R.color.dark_gray));
-//            taskDescription.setTextSize(TypedValue.COMPLEX_UNIT_SP, 16);
-//
-//            Button viewTaskButton = new Button(this);
-//            viewTaskButton.setText("View Task");
-//            viewTaskButton.setOnClickListener(v -> {
-//                Intent intent = new Intent(HomePageActivity.this, QuizActivity.class);
-//                intent.putExtra("topic", topic);
-//                startActivity(intent);
-//            });
-//
-//            containerTask.addView(taskTitle);
-//            containerTask.addView(taskDescription);
-//            containerTask.addView(viewTaskButton);
-//        }
-//    }
-}
